@@ -1,1 +1,14 @@
 # UFOs
+
+## Overview of Project:
+After being given a set of data, stored in `static\js\data.js`, we created `app.js`, `index.html` and `style.css` files to display this data on a clean webpage: `https://gee8.github.io/UFOs/`. The webpage contains the set of data displayed in a table, with the option to filter the data by date, city, state, country and shape. The `app.js` file contains the functions that create the table, populate the variable `filters` with the filters that were changed, and to rebuild the table using those filters. 
+
+Within our `app.js`, we have a function `buildTable()` that will build the table for the webpage. After that, we created an empty variable `filters` that will hold the filters that are found and created in our `updateFilters()` function. Within the `updateFilters()` function, we have another function `filterTable()`. This function loops through our `filters` variable, and filters the data to contain only what matches the filters stored within the `filters` variable, then rebuilds the table using the filtered data.
+
+## Results:
+The webpage `https://gee8.github.io/UFOs/` has a lot of sightings, so a visitor looking for something specific can use the filters on the left side of the table. The webpage visitor can filter the table by date, city, state, country, shape or any combination of these. Shown below is the results for sightings on 1/10/2010 in California.
+
+<img width="650" alt="filteredData" src="./static\images\filteredData.png">
+
+## Summary:
+One drawback for this design is that the punctuation within the `data.js` isn't correct, and that error is being brought in and displayed for the visitors of the website. For example, a comma is being displayed as its unicode decimal code &#44 within the `data.js` file. Another drawback to this design is that the data isn't being sorted. As it is right now, it is in chronological order, but if we were to want to add another event that occured before that last event in `data.js`, to keep it organized we would have to insert the data where it belongs. Instead it would be better if we sorted the data before it is displayed on the webpage. If the data was being sorted, it would be easier to add more events without having to manually organize the data. Another option that would help populate the table data, is to add an option for visitors of the webiste to log their own sightings on the website, and include each the date, city, state, country, shape, duration and comments. These submissions could be formatted and placed within the table, allowing the table to continuously grow without our supervision. We should also allow for capitalization to be ignored while using the filters. For example, benton returns a result for the city benton. However, if we search Benton, we get no results.
