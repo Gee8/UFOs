@@ -48,53 +48,44 @@ function updateFilters() {
     filterTable();
   
   }
-  
+  console.log(filters)
   // 7. Use this function to filter the table when data is entered.
   function filterTable() {
   
     // 8. Set the filtered data to the tableData.
     let filteredData = tableData;
-    let date = d3.select("#datetime").property("value");
-    let city = d3.select("#city").property("value");
-    let state = d3.select("#state").property("value");
-    let country = d3.select("#country").property("value");
-    let shape = d3.select("#shape").property("value");
-    // let filters = [date, city, state, country, shape];
+    // let datetime = d3.select("#datetime").property("value");
+    // let city = d3.select("#city").property("value");
+    // let state = d3.select("#state").property("value");
+    // let country = d3.select("#country").property("value");
+    // let shape = d3.select("#shape").property("value");
+    // let filters = [datetime, city, state, country, shape];
 
     // 9. Loop through all of the filters and keep any data that
     // matches the filter values
-    // for (var i = 0; i < filters.length; i++){
-    //   if (filters[i]){
-    //     filteredData = filteredData.filter(row => row.filters[i] === filters[i]);
-    // }}
-    // filters.forEach((element) {
-    //   if (element){
-    //     filteredData = filteredData.filter(row => row.element == element);
-    //   }
-    // })
-    // function checkFilters(filters) {
-    //   for (let i of filters) {
-    //     if (i != ""){
-    //       filteredData = filteredData.filter(row => row.i == i);
-    //     }
-    //   }
-    // }
+    Object.entries(filters).forEach(([key,value]) => {
+      // console.log(key, value);
+      if (key){
+        filteredData = filteredData.filter(row => row[key] === value);
+      }
+    });
+ 
 
-    if (date) {
-      filteredData = filteredData.filter(row => row.datetime === date);
-    }
-    if (city) {
-      filteredData = filteredData.filter(row => row.city === city);
-    }
-    if (state) {
-      filteredData = filteredData.filter(row => row.state === state);
-    }
-    if (country) {
-      filteredData = filteredData.filter(row => row.country === country);
-    }
-    if (shape) {
-      filteredData = filteredData.filter(row => row.shape === shape);
-    }
+    // if (datetime) {
+    //   filteredData = filteredData.filter(row => row.datetime === datetime);
+    // }
+    // if (city) {
+    //   filteredData = filteredData.filter(row => row.city === city);
+    // }
+    // if (state) {
+    //   filteredData = filteredData.filter(row => row.state === state);
+    // }
+    // if (country) {
+    //   filteredData = filteredData.filter(row => row.country === country);
+    // }
+    // if (shape) {
+    //   filteredData = filteredData.filter(row => row.shape === shape);
+    // }
   
     // 10. Finally, rebuild the table using the filtered data
     buildTable(filteredData);
